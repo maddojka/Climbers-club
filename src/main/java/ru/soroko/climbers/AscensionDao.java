@@ -1,2 +1,4 @@
-package ru.soroko.climbers;public class AscensionDao {
+package ru.soroko.climbers;
+
+public class AscensionDao {
 }
