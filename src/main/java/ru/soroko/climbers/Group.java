@@ -1,9 +1,12 @@
 package ru.soroko.climbers;
 
+import java.time.LocalDate;
+
 public class Group {
-    private int id;
+    private long id;
     private Mountain mountain;
-    private String superiorData;
+    private String superiorFullName;
+    private LocalDate nextAscension;
     private int maxAmountOfParticipants;
     private double cost;
 }

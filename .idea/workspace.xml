@@ -4,15 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ef16933-ef5b-4e17-abc3-3ac9d296c6a0" name="Changes" comment="" />
+    <list default="true" id="4ef16933-ef5b-4e17-abc3-3ac9d296c6a0" name="Changes" comment="Coursework #4 - classes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/C3P0Pool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Ascension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Ascension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/AscensionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/AscensionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Climber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Climber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Mountain.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;maddojka&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/maddojka/Climbers-club.git&quot;,
+    &quot;accountId&quot;: &quot;0ab11902-1433-4276-9270-612f547dfa91&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2g7q8Tr4aUzFgVnu6DGoTAFUzmC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -22,12 +53,26 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true"
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/yuriy/IdeaProjects/climbers",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "File.Encoding"
   }
 }]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="ClimbersClub" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="climbersClub" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -42,6 +87,19 @@
       <option name="presentableId" value="Default" />
       <updated>1715058805504</updated>
     </task>
+    <task id="LOCAL-00001" summary="Coursework #4 - classes">
+      <option name="closed" value="true" />
+      <created>1715061082556</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715061082556</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Coursework #4 - classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coursework #4 - classes" />
   </component>
 </project>

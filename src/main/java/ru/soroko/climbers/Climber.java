@@ -1,7 +1,7 @@
 package ru.soroko.climbers;
 
 public class Climber {
-    private int id;
+    private long id;
     private String name;
     private String surname;
     private int number;
