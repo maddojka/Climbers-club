@@ -5,6 +5,80 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AscensionDao {
+    public boolean createClimber() {
+        String createSql = "CREATE TABLE IF NOT EXISTS tb_climbers(" +
+                "id SERIAL PRIMARY KEY, " +
+                "name VARCHAR(30) NOT NULL, " +
+                "surname VARCHAR(50) NOT NULL, " +
+                "phone_number INTEGER UNIQUE, " +
+                "email VARCHAR(30) UNIQUE)";
+        try (Connection connection = C3P0Pool.getConnection()) {
+            try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate(createSql);
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean createMountain() {
+        String createSql = "CREATE TABLE IF NOT EXISTS tb_mountains(" +
+                "id SERIAL PRIMARY KEY, " +
+                "title VARCHAR(30) NOT NULL, " +
+                "country VARCHAR(30) NOT NULL, " +
+                "height INTEGER CHECK (height > 100))";
+        try (Connection connection = C3P0Pool.getConnection()) {
+            try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate(createSql);
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean createGroup() {
+        String createSql = "CREATE TABLE IF NOT EXISTS tb_groups(" +
+                "id SERIAL PRIMARY KEY, " +
+                "superior VARCHAR(100) NOT NULL, " +
+                "next_ascension DATE DEFAULT CURRENT_DATE NOT NULL, " +
+                "max_climbers INTEGER DEFAULT 50 NOT NULL, " +
+                "cost INTEGER NOT NULL, " +
+                "mountain_id INTEGER NOT NULL, " +
+                "CONSTRAINT fk_mountain_groups " +
+                "FOREIGN KEY (mountain_id) " +
+                "REFERENCES tb_mountains (id))";
+        try (Connection connection = C3P0Pool.getConnection()) {
+            try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate(createSql);
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean createAscension() {
+        String createSql = "CREATE TABLE IF NOT EXISTS tb_ascensions(" +
+                "id SERIAL PRIMARY KEY, " +
+                "start_date TIMESTAMPTZ, " +
+                "end_date TIMESTAMPTZ, " +
+                "succeed_climbers INTEGER NOT NULL, " +
+                "group_id INTEGER NOT NULL, " +
+                "CONSTRAINT fk_group_ascensions " +
+                "FOREIGN KEY (group_id) " +
+                "REFERENCES tb_groups (id))";
+        try (Connection connection = C3P0Pool.getConnection()) {
+            try (Statement statement = connection.createStatement()) {
+                statement.executeUpdate(createSql);
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public void getAscensionSurnamesAndEmails(Climber climber) {
         String selectSql = "SELECT surname, email, " +
                 "FROM tb_climbers " +
@@ -86,7 +160,6 @@ public class AscensionDao {
                 ResultSet resultSet = ps.executeQuery();
                 List<String> mountainNames = new ArrayList<>();
                 while (resultSet.next()) {
-                    String mountainName = "";
                     mountainNames.add(null);
                 }
                 return mountainNames;
