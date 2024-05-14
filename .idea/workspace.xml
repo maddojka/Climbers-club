@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ef16933-ef5b-4e17-abc3-3ac9d296c6a0" name="Changes" comment="Coursework #4 - classes and few queries">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Queries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Ascension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Ascension.java" afterDir="false" />
+    <list default="true" id="4ef16933-ef5b-4e17-abc3-3ac9d296c6a0" name="Changes" comment="Coursework #4 - changes">
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/AscensionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/AscensionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Climber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Climber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Mountain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Mountain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,20 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Application.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/yuriy/IdeaProjects/databases",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/yuriy/IdeaProjects/databases&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.soroko.climbers.Application" />
@@ -131,12 +123,37 @@
       <option name="project" value="LOCAL" />
       <updated>1715179691479</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Coursework #4 - changes">
+      <option name="closed" value="true" />
+      <created>1715663435109</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715663435109</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Coursework #4 - changes">
+      <option name="closed" value="true" />
+      <created>1715663542754</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715663542754</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Coursework #4 - changes">
+      <option name="closed" value="true" />
+      <created>1715663637669</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715663637669</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Coursework #4 - classes" />
     <MESSAGE value="Coursework #4 - classes and few queries" />
-    <option name="LAST_COMMIT_MESSAGE" value="Coursework #4 - classes and few queries" />
+    <MESSAGE value="Coursework #4 - changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coursework #4 - changes" />
   </component>
 </project>

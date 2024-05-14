@@ -1,9 +1,17 @@
 package ru.soroko.climbers;
 
+
+import org.hibernate.*;
+import org.hibernate.cfg.Configuration;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        try (SessionFactory sessionFactory = new Configuration().buildSessionFactory()) {
+        }
         Country tanzania = new Country("Tanzania");
         Mountain kilimanjaro = new Mountain("Kilimanjaro", tanzania, 5895);
         Country russia = new Country("Russia");
@@ -61,7 +69,23 @@ public class Application {
         ascensionDao.createMountain();
         ascensionDao.createGroup();
         ascensionDao.createAscension();
-       // insertSql(elbrus);
+        // insertSql(elbrus);
+        List<String> climbers = new ArrayList<>();
+        climbers = queries.getAscensionSurnamesAndEmails();
+        System.out.println(climbers);
+        List<String> groupsIds = new ArrayList<>();
+        groupsIds = queries.getIdByValue();
+        System.out.println(groupsIds);
+        List<String> openGroups = new ArrayList<>();
+        openGroups = queries.getOpenGroups();
+        System.out.println(openGroups);
+        List<String> ascensionsByPeriod = new ArrayList<>();
+        ascensionsByPeriod = queries.getAscensionsByPeriod();
+        System.out.println(ascensionsByPeriod);
+        List<String> mountainNames = new ArrayList<>();
+        mountainNames = queries.getMountainNames();
+        System.out.println(mountainNames);
+
     }
 
 //    public static <T> int insertSql(T t) {
