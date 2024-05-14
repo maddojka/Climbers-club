@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ef16933-ef5b-4e17-abc3-3ac9d296c6a0" name="Changes" comment="Coursework #4 - classes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/C3P0Pool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="4ef16933-ef5b-4e17-abc3-3ac9d296c6a0" name="Changes" comment="Coursework #4 - classes and few queries">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Queries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Ascension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Ascension.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/AscensionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/AscensionDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Climber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/soroko/climbers/Climber.java" afterDir="false" />
@@ -52,18 +53,32 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Application.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/yuriy/IdeaProjects/climbers",
+    "last_opened_file_path": "C:/Users/yuriy/IdeaProjects/databases",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "File.Encoding"
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
   <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.soroko.climbers.Application" />
+      <module name="databases" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.soroko.climbers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="ClimbersClub" />
       <method v="2">
@@ -77,6 +92,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -95,11 +115,28 @@
       <option name="project" value="LOCAL" />
       <updated>1715061082556</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Coursework #4 - classes">
+      <option name="closed" value="true" />
+      <created>1715102098727</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715102098727</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Coursework #4 - classes and few queries">
+      <option name="closed" value="true" />
+      <created>1715179691479</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715179691479</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Coursework #4 - classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Coursework #4 - classes" />
+    <MESSAGE value="Coursework #4 - classes and few queries" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coursework #4 - classes and few queries" />
   </component>
 </project>
