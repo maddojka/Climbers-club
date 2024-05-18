@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class AscensionDao
@@ -55,7 +56,7 @@ public class AscensionDao
         return namedNativeQuery.getResultList();
     }
 
-    public List<Ascension> getAscensionsByPeriod() {
+    public List<Ascension> getAscensionsByPeriod(LocalDate from, LocalDate before) {
         TypedQuery<Ascension> namedNativeQuery = entityManager
                 .createNamedQuery("get_ascensions_by_period", Ascension.class);
         return namedNativeQuery.getResultList();

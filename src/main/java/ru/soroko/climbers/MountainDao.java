@@ -41,7 +41,7 @@ public class MountainDao extends Dao<Mountain, Integer> {
         return entityManager.find(Mountain.class, integer);
     }
 
-    public List<String> getMountainNames() {
+    public List<String> getMountainNames(int succeedClimbers) {
         TypedQuery<String> namedNativeQuery = entityManager
                 .createNamedQuery("get_mountain_names", String.class);
         return namedNativeQuery.getResultList();
