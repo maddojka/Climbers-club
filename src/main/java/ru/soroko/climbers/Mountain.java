@@ -1,38 +1,38 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 
-import java.util.List;
-
-@Setter
-@Getter
+@Data
 @Entity
 @Table(name = "tb_mountains")
 public class Mountain {
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 10, max = 50)
     @Column(name = "title", nullable = false, length = 50)
     private String title;
-    @Column(name = "country", nullable = false)
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "country", nullable = false)
     private Country country;
+
+    @Positive
+    @Size(min = 100)
     @Column(name = "height", nullable = false)
     private int height;
-    @ManyToOne
+
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "ascension_id", nullable = false)
     private Ascension ascension;
 
-    public Mountain(String title, Country country, int height) {
-        if ("".equals(title))
-            throw new IllegalArgumentException("Название горы не может быть пустой строкой");
-        if (country == null)
-            throw new IllegalArgumentException("Название строны не может быть пустым");
-        if (height < 100)
-            throw new IllegalArgumentException("Высота горы не может быть меньше 100 м");
-        this.title = title;
-        this.country = country;
-        this.height = height;
-    }
 }

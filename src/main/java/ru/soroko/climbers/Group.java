@@ -1,46 +1,43 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.validation.constraints.*;
+import lombok.Data;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-@Setter
-@Getter
+@Data
 @Entity
 @Table(name = "tb_groups")
 public class Group {
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @ManyToOne
     @JoinColumn(name = "mountain_id", nullable = false)
     private Mountain mountain;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 10, max = 100)
     @Column(name = "superior", nullable = false, length = 100)
     private String superior;
+
+    @NotNull
+    @Future
     @Column(name = "next_ascension", nullable = false)
-    private LocalDate nextAscension;
+    private LocalDateTime nextAscension;
+
+    @Positive
     @Column(name = "max_climbers", nullable = false)
     private int maxClimbers;
+
+    @Positive
     @Column(name = "cost", nullable = false)
     private double cost;
+
+    @PositiveOrZero
     @Column(name = "amount_of_climbers", nullable = false)
     private int amountOfClimbers;
-
-    public Group(String superior, LocalDate nextAscension, int maxClimbers, double cost) {
-        if ("".equals(superior))
-            throw new IllegalArgumentException("ФИО руководителя группы не может быть пустой строкой");
-        if (nextAscension == null)
-            throw new IllegalArgumentException("Дата следующего восхождения не может быть пустой");
-        if (maxClimbers <= 0)
-            throw new IllegalArgumentException("Максимальное количество альпиниство " +
-                    "в группе должно быть положительным числом");
-        if (cost < 1000.0)
-            throw new IllegalArgumentException("Стоимость участия должна быть больше или равна 1000");
-        this.superior = superior;
-        this.nextAscension = nextAscension;
-        this.maxClimbers = maxClimbers;
-        this.cost = cost;
-    }
 }

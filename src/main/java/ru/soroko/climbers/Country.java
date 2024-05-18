@@ -1,23 +1,23 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "tb_countries")
 public class Country {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 2, max = 30)
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    public Country(String name) {
-        if ("".equals(name))
-            throw new IllegalArgumentException("Название страны не может быть пустой строкой");
-        this.name = name;
-    }
 }

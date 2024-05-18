@@ -4,16 +4,42 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.soroko</groupId>
-    <artifactId>databases</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <!--
+      Комментарии
+      Система сборки (idea, maven, gradle) позволяет:
+      1. Описывать проект, указывая его идентификатор, название, версию java.
+      (см. теги groupId, artifactId, version, properties, name, description).
+      2. Добавлять в проект необходимые библиотеки (см. тег dependencies).
+      3. Добавлять плагины, которые позволяют генерировать документацию,
+      компилировать файлы, запускать тесты, собирать проект (см. теги packaging, build).
+    -->
 
+    <!-- 1. GAV - обязательная информация -->
+    <groupId>ru.itmo</groupId>
+    <artifactId>databases</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- SNAPSHOT - версия находится в разработке -->
+
+    <!-- 2. Необязательная информация -->
+    <name>Работа с БД</name>
+    <description>Основы работы с Базами Данных</description>
+
+    <!-- 3. Результат сборки-->
+    <packaging>jar</packaging>
+    <!-- jar по умолчанию -->
+    <!-- pom - родитель в модульной сборке -->
+    <!-- war - для web приложений -->
+    <!-- ear - для enterprise приложений -->
+
+    <!-- 4. Настройки проекта -->
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!-- 5. зависимости проекта -->
+    <!-- все зависимости -->
     <dependencies>
         <!-- библиотека используется для написания тестов -->
         <dependency>
@@ -49,6 +75,9 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- JPA -->
+        <!-- java persistence api -->
+        <!-- jakarta persistence api -->
         <!-- библиотека используется для написания тестов -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -65,13 +94,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- библиотека - пул соединений для подключения к серверу БД -->
         <dependency>
             <groupId>com.mchange</groupId>
@@ -79,15 +101,32 @@
             <version>0.9.5.5</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.4.1.Final</version>
         </dependency>
 
-    </dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+            <scope>provided</scope>
+        </dependency>
 
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.1.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <!-- имя файла, который будет создан в результате сборки -->
@@ -124,7 +163,6 @@
                 </configuration>
             </plugin>
 
-
             <!-- генерация документации -->
             <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -153,7 +191,5 @@
                  </configuration>
              </plugin> -->
         </plugins>
-
     </build>
-
 </project>

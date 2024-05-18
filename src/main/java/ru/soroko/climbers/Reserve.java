@@ -1,23 +1,20 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "tb_reserves")
 public class Reserve {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "group", nullable = false)
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "group", nullable = false)
     private Group group;
 
-    public Reserve(Group group) {
-        if (group == null)
-            throw new IllegalArgumentException("Группа не может быть null");
-        this.group = group;
-    }
 }

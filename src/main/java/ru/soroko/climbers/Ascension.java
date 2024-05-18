@@ -1,38 +1,36 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import lombok.Data;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
-@Setter
-@Getter
+@Data
 @Entity
 @Table(name = "tb_ascensions")
 public class Ascension {
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @NotNull
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
+
+    @NotNull
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
+
+    @PositiveOrZero
     @Column(name = "succeed_climbers", nullable = false)
     private int succeedClimbers;
+
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;
 
-    public Ascension(LocalDate startDate, LocalDate endDate, int succeedClimbers) {
-        if (startDate == null)
-            throw new IllegalArgumentException("Дата начала восхождения не может быть пустым");
-        if (endDate == null)
-            throw new IllegalArgumentException("Дата окончания восхождения не может быть пустым");
-        if (succeedClimbers < 0)
-            throw  new IllegalArgumentException("Количество покоривших гору не может быть отрицательным числом");
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.succeedClimbers = succeedClimbers;
-    }
 }

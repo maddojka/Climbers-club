@@ -1,18 +1,19 @@
 package ru.soroko.climbers;
 
 
-import org.hibernate.*;
-import org.hibernate.cfg.Configuration;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        try (SessionFactory sessionFactory = new Configuration().buildSessionFactory()) {
-        }
-        Country tanzania = new Country("Tanzania");
+        EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("climbers");
+        EntityManager manager = factory.createEntityManager();
+
+       /* Country tanzania = new Country("Tanzania");
         Mountain kilimanjaro = new Mountain("Kilimanjaro", tanzania, 5895);
         Country russia = new Country("Russia");
         Mountain elbrus = new Mountain("Elbrus", russia, 5643);
@@ -62,33 +63,30 @@ public class Application {
                         LocalDate.of(2022, 11, 6), 10);
         Ascension andesAscension =
                 new Ascension(LocalDate.of(2021, 5, 6),
-                        LocalDate.of(2021, 6, 6), 4);
-        AscensionDao ascensionDao = new AscensionDao();
-        Queries queries = new Queries();
-        ascensionDao.createClimber();
-        ascensionDao.createMountain();
-        ascensionDao.createGroup();
-        ascensionDao.createAscension();
+                        LocalDate.of(2021, 6, 6), 4);*/
+      //  NotInUse ascensionDao = new NotInUse();
+    //    Queries queries = new Queries();
+       // ascensionDao.createClimber();
+       // ascensionDao.createMountain();
+      //  ascensionDao.createGroup();
+      //  ascensionDao.createAscension();
         // insertSql(elbrus);
-        List<String> climbers = new ArrayList<>();
-        climbers = queries.getAscensionSurnamesAndEmails();
-        System.out.println(climbers);
-        List<String> groupsIds = new ArrayList<>();
-        groupsIds = queries.getIdByValue();
-        System.out.println(groupsIds);
-        List<String> openGroups = new ArrayList<>();
-        openGroups = queries.getOpenGroups();
-        System.out.println(openGroups);
-        List<String> ascensionsByPeriod = new ArrayList<>();
-        ascensionsByPeriod = queries.getAscensionsByPeriod();
-        System.out.println(ascensionsByPeriod);
-        List<String> mountainNames = new ArrayList<>();
-        mountainNames = queries.getMountainNames();
-        System.out.println(mountainNames);
-
+        //   List<String> climbers = new ArrayList<>();
+       // climbers = queries.getAscensionSurnamesAndEmails();
+       // System.out.println(climbers);
+      //  List<String> groupsIds = new ArrayList<>();
+      //  groupsIds = queries.getIdByValue();
+      //  System.out.println(groupsIds);
+      //  List<String> openGroups = new ArrayList<>();
+       // openGroups = queries.getOpenGroups();
+       // System.out.println(openGroups);
+     //   List<String> ascensionsByPeriod = new ArrayList<>();
+     //   ascensionsByPeriod = queries.getAscensionsByPeriod();
+     //   System.out.println(ascensionsByPeriod);
+     //   List<String> mountainNames = new ArrayList<>();
+    //    mountainNames = queries.getMountainNames();
+      //  System.out.println(mountainNames);
+        manager.close();
+        factory.close();
     }
-
-//    public static <T> int insertSql(T t) {
-//        return session.persist(t);
-//    }
 }
