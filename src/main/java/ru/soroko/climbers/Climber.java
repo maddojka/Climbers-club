@@ -6,10 +6,15 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
+
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "get_id_by_value", query = "SELECT surname, email " +
+                "FROM  tb_climbers " +
+                "WHERE DATE_PART('day', CURRENT_DATE) < DATE_PART('day', CURRENT_DATE - 365) " +
+                "ORDER BY surname ")
+})
 @Data
 @Entity
 @Table(name = "tb_climbers")
@@ -43,5 +48,4 @@ public class Climber {
     @NotNull
     @Column(name = "last_ascension", nullable = false)
     private LocalDate lastAscension;
-
 }

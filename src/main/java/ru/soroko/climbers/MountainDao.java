@@ -1,6 +1,9 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+
+import java.util.List;
 
 public class MountainDao extends Dao<Mountain, Integer> {
 
@@ -36,5 +39,11 @@ public class MountainDao extends Dao<Mountain, Integer> {
     @Override
     public Mountain findById(Integer integer) {
         return entityManager.find(Mountain.class, integer);
+    }
+
+    public List<String> getMountainNames() {
+        TypedQuery<String> namedNativeQuery = entityManager
+                .createNamedQuery("get_mountain_names", String.class);
+        return namedNativeQuery.getResultList();
     }
 }

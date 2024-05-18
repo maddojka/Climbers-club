@@ -1,6 +1,9 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+
+import java.util.List;
 
 public class ClimberDao
         extends Dao<Climber, Integer> {
@@ -37,5 +40,11 @@ public class ClimberDao
     @Override
     public Climber findById(Integer integer) {
         return entityManager.find(Climber.class, integer);
+    }
+
+    public List<String> getSurnamesAndEmails() {
+        TypedQuery<String> namedNativeQuery = entityManager
+                .createNamedQuery("get_id_by_value", String.class);
+        return namedNativeQuery.getResultList();
     }
 }

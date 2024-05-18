@@ -7,6 +7,13 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "get_mountain_names", query = "SELECT title " +
+                "FROM tb_mountains " +
+                "JOIN tb_ascensions " +
+                "ON tb_ascensions.id = tb_mountains.ascension_id " +
+                "WHERE ascension.succeed_climbers > 5 ")
+})
 @Data
 @Entity
 @Table(name = "tb_mountains")
@@ -31,7 +38,7 @@ public class Mountain {
     @Column(name = "height", nullable = false)
     private int height;
 
-    @ManyToOne//(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "ascension_id", nullable = false)
     private Ascension ascension;
 
