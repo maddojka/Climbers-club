@@ -8,7 +8,6 @@ import java.util.List;
 public class AscensionDao
         extends Dao<Ascension, Integer> {
 
-
     public AscensionDao(EntityManager entityManager) {
         super(entityManager);
     }

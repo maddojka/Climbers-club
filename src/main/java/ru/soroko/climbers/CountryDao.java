@@ -5,7 +5,6 @@ import jakarta.persistence.EntityManager;
 public class CountryDao
     extends Dao<Country, Integer> {
 
-
     public CountryDao(EntityManager entityManager) {
             super(entityManager);
         }

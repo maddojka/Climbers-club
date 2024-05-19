@@ -2,8 +2,8 @@ package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
 
-public class MountainDao extends Dao<Mountain, Integer> {
-
+public class MountainDao
+        extends Dao<Mountain, Integer> {
 
     public MountainDao(EntityManager entityManager) {
         super(entityManager);

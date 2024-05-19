@@ -7,7 +7,6 @@ import java.util.List;
 public class ClimberDao
         extends Dao<Climber, Integer> {
 
-
     public ClimberDao(EntityManager entityManager) {
         super(entityManager);
     }
@@ -44,7 +43,7 @@ public class ClimberDao
     public List<String> getSurnamesAndEmails() {
         String getSurnamesAndEmailsSql = "SELECT surname, email " +
                 "FROM tb_climbers " +
-                "WHERE DATE_PART('day', last_ascension) < DATE_PART('day', CURRENT_DATE - 365) " +
+                "WHERE last_ascension < CURRENT_DATE - 365 " +
                 "ORDER BY surname ";
         Query query = entityManager.createNativeQuery(getSurnamesAndEmailsSql, String.class);
         return query.getResultList();
