@@ -178,6 +178,8 @@ public class Application {
         andesAscension.setGroup(thirdGroup);
         andesAscension.setMountain(andes);
         ascensionDao.insert(andesAscension);
+        // creating reserve group
+        Reserve reserve = new Reserve();
         // call queries
         climberDao.getSurnamesAndEmails();
         ascensionDao.getOpenGoups();
@@ -185,6 +187,8 @@ public class Application {
         ascensionDao.getAscensionsByPeriod(LocalDate.of(2021, 5, 6),
                 LocalDate.of(2023, 9, 10));
         mountainDao.getMountainNames(5);
+        // add climber
+        addClimber(fifthClimber, firstGroup, reserve, climberDao);
         manager.close();
         factory.close();
     }
