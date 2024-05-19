@@ -2,6 +2,8 @@ package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import jakarta.persistence.Tuple;
+
 import java.util.List;
 
 public class ClimberDao
@@ -40,13 +42,12 @@ public class ClimberDao
         return entityManager.find(Climber.class, integer);
     }
 
-    public List<String> getSurnamesAndEmails() {
+    public List<Tuple> getSurnamesAndEmails() {
         String getSurnamesAndEmailsSql = "SELECT surname, email " +
                 "FROM tb_climbers " +
                 "WHERE last_ascension < CURRENT_DATE - 365 " +
                 "ORDER BY surname ";
-        Query query = entityManager.createNativeQuery(getSurnamesAndEmailsSql, String.class);
+        Query query = entityManager.createNativeQuery(getSurnamesAndEmailsSql, Tuple.class);
         return query.getResultList();
     }
-
 }
