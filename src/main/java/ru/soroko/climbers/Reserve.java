@@ -2,6 +2,7 @@ package ru.soroko.climbers;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -14,6 +15,10 @@ public class Reserve {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @PositiveOrZero
+    @Column(name = "amount_of_climbers", nullable = false)
+    private int amountOfClimbers = 0;
 
     @NotNull
     @ManyToMany
