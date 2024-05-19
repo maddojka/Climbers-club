@@ -38,5 +38,4 @@ public class MountainDao
         return entityManager.find(Mountain.class, integer);
     }
 
-
 }

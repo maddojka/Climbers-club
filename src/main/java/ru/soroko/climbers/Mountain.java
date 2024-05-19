@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +25,6 @@ public class Mountain {
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
-    /*@NotNull
-    @ManyToOne
-    @JoinColumn(name = "country", nullable = false)
-    private Country country;*/
     @NotNull
     @ManyToMany
     @JoinTable(name = "tb_mountain_countries",
@@ -40,9 +37,6 @@ public class Mountain {
     @Column(name = "height", nullable = false)
     private int height;
 
-    /*@ManyToOne
-    @JoinColumn(name = "ascension_id", nullable = false)
-    private Ascension ascension;*/
     @NotNull
     @OneToMany(mappedBy = "mountain")
     private List<Ascension> ascensions = new ArrayList<>();

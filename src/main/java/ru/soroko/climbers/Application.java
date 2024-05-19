@@ -10,6 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 
+/**
+ * Climbers club logic goes here.
+ *
+ * @version 1.0 19 May 2024
+ * @author Yuriy Soroko
+ */
+
 public class Application {
     public static void main(String[] args) {
         EntityManagerFactory factory = Persistence
@@ -31,7 +38,6 @@ public class Application {
         firstClimber.setPhoneNumber(892113374563L);
         firstClimber.setEmail("asmith@gmail.com");
         firstClimber.setLastAscension(LocalDate.of(2022, 4, 30));
-        //  climberDao.insert(firstClimber);
         Climber secondClimber = new Climber();
         // second climber
         secondClimber.setName("Samuel");
@@ -39,7 +45,6 @@ public class Application {
         secondClimber.setPhoneNumber(892187374572L);
         secondClimber.setEmail("sadamson@gmail.com");
         secondClimber.setLastAscension(LocalDate.of(2021, 9, 10));
-        //  climberDao.insert(secondClimber);
         // third climber
         Climber thirdClimber = new Climber();
         thirdClimber.setName("Olivia");
@@ -47,7 +52,6 @@ public class Application {
         thirdClimber.setPhoneNumber(891178855541L);
         thirdClimber.setEmail("osmith@gmail.com");
         thirdClimber.setLastAscension(LocalDate.of(2018, 6, 12));
-        //  climberDao.insert(thirdClimber);
         // fourth climber
         Climber fourthClimber = new Climber();
         fourthClimber.setName("Jack");
@@ -55,7 +59,6 @@ public class Application {
         fourthClimber.setPhoneNumber(893144579005L);
         fourthClimber.setEmail("jaldridge@gmail.com");
         fourthClimber.setLastAscension(LocalDate.of(2023, 12, 5));
-        //   climberDao.insert(fourthClimber);
         // fifth climber
         Climber fifthClimber = new Climber();
         fifthClimber.setName("Amelia");
@@ -63,7 +66,6 @@ public class Application {
         fifthClimber.setPhoneNumber(892115576522L);
         fifthClimber.setEmail("abrown@gmail.com");
         fifthClimber.setLastAscension(LocalDate.of(2022, 8, 15));
-        //  climberDao.insert(fifthClimber);
         // sixth climber
         Climber sixthClimber = new Climber();
         sixthClimber.setName("Joseph");
@@ -71,7 +73,6 @@ public class Application {
         sixthClimber.setPhoneNumber(891187674552L);
         sixthClimber.setEmail("jevans@gmail.com");
         sixthClimber.setLastAscension(LocalDate.of(2020, 5, 10));
-        // climberDao.insert(sixthClimber);
         // seventh climber
         Climber seventhClimber = new Climber();
         seventhClimber.setName("Emily");
@@ -79,7 +80,6 @@ public class Application {
         seventhClimber.setPhoneNumber(899923377764L);
         seventhClimber.setEmail("ewalker@gmail.com");
         seventhClimber.setLastAscension(LocalDate.of(2019, 6, 17));
-        // climberDao.insert(seventhClimber);
         // eighth climber
         Climber eighthClimber = new Climber();
         eighthClimber.setName("Harry");
@@ -87,7 +87,6 @@ public class Application {
         eighthClimber.setPhoneNumber(8952323675567L);
         eighthClimber.setEmail("hjohnson@gmail.com");
         eighthClimber.setLastAscension(LocalDate.of(2023, 11, 13));
-        //  climberDao.insert(eighthClimber);
         // nineth climber
         Climber ninethClimber = new Climber();
         ninethClimber.setName("Jessica");
@@ -95,7 +94,6 @@ public class Application {
         ninethClimber.setPhoneNumber(891114479591L);
         ninethClimber.setEmail("jharris@gmail.com");
         ninethClimber.setLastAscension(LocalDate.of(2024, 2, 20));
-        // climberDao.insert(ninethClimber);
         // tenth climber
         Climber tenthClimber = new Climber();
         tenthClimber.setName("Thomas");
@@ -103,7 +101,6 @@ public class Application {
         tenthClimber.setPhoneNumber(892113074483L);
         tenthClimber.setEmail("tdavies@gmail.com");
         tenthClimber.setLastAscension(LocalDate.of(2024, 3, 31));
-        // climberDao.insert(tenthClimber);
         // creating countries
         // tanzania
         Country tanzania = new Country();

@@ -2,6 +2,7 @@ package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+
 import java.time.LocalDate;
 import java.util.List;
 
