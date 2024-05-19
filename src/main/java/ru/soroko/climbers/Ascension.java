@@ -4,25 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Data;
 import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 
-//@NamedNativeQueries({
-        /*@NamedNativeQuery(name = "get_group_id", query = "SELECT group_id " +
-                "FROM tb_ascensions " +
-                "JOIN tb_groups " +
-                "ON tb_groups.id = tb_ascensions.group_id " +
-                "WHERE tb_groups.superior =:superior AND tb_ascensions.succeed_climbers >:succeedClimbers "),*/
-        /*@NamedNativeQuery(name = "get_ascensions_by_period", query = "SELECT * " +
-                "FROM tb_ascensions " +
-                "WHERE start_date >=:startDate " +
-                "AND end_date <:=endDate "),*/
-      /*  @NamedNativeQuery(name = "get_mountain_names", query = "SELECT tb_mountains.title " +
-                "FROM tb_ascensions " +
-                "JOIN tb_mountains " +
-                "ON tb_mountains.id = tb_ascensions.mountain_id " +
-                "WHERE tb_ascensions.succeed_climbers >:succeedClimbers ")*/
-//})
 @Data
 @Entity
 @Table(name = "tb_ascensions")
