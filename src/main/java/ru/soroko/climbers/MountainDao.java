@@ -1,8 +1,6 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
-import java.util.List;
 
 public class MountainDao extends Dao<Mountain, Integer> {
 

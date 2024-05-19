@@ -1,13 +1,12 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.Query;
 
 import java.util.List;
 
 public class GroupDao
         extends Dao<Group, Integer> {
-
 
     public GroupDao(EntityManager entityManager) {
         super(entityManager);
@@ -43,8 +42,11 @@ public class GroupDao
     }
 
     public List<Group> getOpenGoups() {
-        TypedQuery<Group> namedNativeQuery = entityManager
-                .createNamedQuery("get_open_groups", Group.class);
-        return namedNativeQuery.getResultList();
+        String getOpenGroupsSql = "SELECT * " +
+                "FROM tb_groups " +
+                "WHERE tb_groups.amount_of_climbers < tb_groups.max_climbers " +
+                "AND CURRENT_DATE < tb_groups.next_ascension ";
+        Query query = entityManager.createNativeQuery(getOpenGroupsSql, Group.class);
+        return query.getResultList();
     }
 }

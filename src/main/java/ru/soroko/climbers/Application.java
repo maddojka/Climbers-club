@@ -181,14 +181,7 @@ public class Application {
         // creating reserve
         Reserve reserve = new Reserve();
         reserveDao.insert(reserve);
-        // call queries
-      //  System.out.println(climberDao.getSurnamesAndEmails());
-      //  System.out.println(groupDao.getOpenGoups());
-      //  System.out.println(ascensionDao.getGroupId("George Wilson", 5));
-      //  System.out.println(ascensionDao.getAscensionsByPeriod(LocalDate.of(2021, 5, 6),
-      //          LocalDate.of(2023, 9, 10)));
-       // System.out.println(ascensionDao.getMountainNames(5));
-        // add climber
+        // add climbers
         addClimber(firstClimber, firstGroup, reserve, climberDao, groupDao, reserveDao);
         addClimber(secondClimber, firstGroup, reserve, climberDao, groupDao, reserveDao);
         addClimber(thirdClimber, secondGroup, reserve, climberDao, groupDao, reserveDao);
@@ -199,6 +192,13 @@ public class Application {
         addClimber(eighthClimber, thirdGroup, reserve, climberDao, groupDao, reserveDao);
         addClimber(ninethClimber, thirdGroup, reserve, climberDao, groupDao, reserveDao);
         addClimber(tenthClimber, thirdGroup, reserve, climberDao, groupDao, reserveDao);
+        // call queries
+        System.out.println(climberDao.getSurnamesAndEmails());
+        System.out.println(ascensionDao.getGroupId("George Wilson", 4));
+        System.out.println(groupDao.getOpenGoups());
+        System.out.println(ascensionDao.getAscensionsByPeriod(LocalDate.of(2023, 5, 6),
+                LocalDate.of(2023, 9, 10)));
+        System.out.println(ascensionDao.getMountainNames(5));
         manager.close();
         factory.close();
     }

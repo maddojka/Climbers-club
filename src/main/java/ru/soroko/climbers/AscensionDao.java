@@ -1,8 +1,7 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
-
+import jakarta.persistence.Query;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -44,25 +43,37 @@ public class AscensionDao
     }
 
     public List<Integer> getGroupId(String superiorData, int succeedClimbers) {
-        TypedQuery<Integer> namedNativeQuery = entityManager
-                .createNamedQuery("get_group_id", Integer.class);
-        namedNativeQuery.setParameter("superior", superiorData);
-        namedNativeQuery.setParameter("succeedClimbers", succeedClimbers);
-        return namedNativeQuery.getResultList();
+        String getGroupIdSql = "SELECT group_id " +
+                "FROM tb_ascensions " +
+                "JOIN tb_groups " +
+                "ON tb_groups.id = tb_ascensions.group_id " +
+                "WHERE tb_groups.superior =:superior " +
+                "AND tb_ascensions.succeed_climbers >:succeedClimbers ";
+        Query query = entityManager.createNativeQuery(getGroupIdSql, Integer.class);
+        query.setParameter("superior", superiorData);
+        query.setParameter("succeedClimbers", succeedClimbers);
+        return query.getResultList();
     }
 
     public List<Ascension> getAscensionsByPeriod(LocalDate startDate, LocalDate endDate) {
-        TypedQuery<Ascension> namedNativeQuery = entityManager
-                .createNamedQuery("get_ascensions_by_period", Ascension.class);
-        namedNativeQuery.setParameter("startDate", startDate);
-        namedNativeQuery.setParameter("endDate", endDate);
-        return namedNativeQuery.getResultList();
+        String getAscensionsByPeriodSql = "SELECT * " +
+                "FROM tb_ascensions " +
+                "WHERE start_date >=:startDate " +
+                "AND end_date <=:endDate ";
+        Query query = entityManager.createNativeQuery(getAscensionsByPeriodSql, Ascension.class);
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+        return query.getResultList();
     }
 
     public List<String> getMountainNames(int succeedClimbers) {
-        TypedQuery<String> namedNativeQuery = entityManager
-                .createNamedQuery("get_mountain_names", String.class);
-        namedNativeQuery.setParameter("succeedClimbers", succeedClimbers);
-        return namedNativeQuery.getResultList();
+        String getMountainNamesSql = "SELECT tb_mountains.title " +
+                "FROM tb_ascensions " +
+                "JOIN tb_mountains " +
+                "ON tb_mountains.id = tb_ascensions.mountain_id " +
+                "WHERE tb_ascensions.succeed_climbers >:succeedClimbers";
+        Query query = entityManager.createNativeQuery(getMountainNamesSql, String.class);
+        query.setParameter("succeedClimbers", succeedClimbers);
+        return query.getResultList();
     }
 }

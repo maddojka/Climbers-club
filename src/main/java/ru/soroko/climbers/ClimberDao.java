@@ -1,9 +1,7 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
-import org.hibernate.query.Query;
-
+import jakarta.persistence.Query;
 import java.util.List;
 
 public class ClimberDao
@@ -44,9 +42,12 @@ public class ClimberDao
     }
 
     public List<String> getSurnamesAndEmails() {
-        TypedQuery<String> namedNativeQuery = entityManager
-                .createNamedQuery("get_id_by_value", String.class);
-        return namedNativeQuery.getResultList();
+        String getSurnamesAndEmailsSql = "SELECT surname, email " +
+                "FROM tb_climbers " +
+                "WHERE DATE_PART('day', last_ascension) < DATE_PART('day', CURRENT_DATE - 365) " +
+                "ORDER BY surname ";
+        Query query = entityManager.createNativeQuery(getSurnamesAndEmailsSql, String.class);
+        return query.getResultList();
     }
 
 }

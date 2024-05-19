@@ -8,12 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQueries({
-        @NamedNativeQuery(name = "get_open_groups", query = "SELECT * " +
-                "FROM tb_groups " +
-                "WHERE tb_groups.amount_of_climbers < tb_groups.max_climbers " +
-                "AND CURRENT_DATE < tb_groups.next_ascension "),
-})
 @Data
 @Entity
 @Table(name = "tb_groups")

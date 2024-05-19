@@ -10,13 +10,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@NamedNativeQueries({
-        @NamedNativeQuery(name = "get_id_by_value", query = "SELECT surname, email " +
-                "FROM tb_climbers " +
-                "WHERE DATE_PART('day', last_ascension) < DATE_PART('day', CURRENT_DATE - 365) " +
-                "ORDER surname ")
-})
 @Data
 @Entity
 @Table(name = "tb_climbers")
