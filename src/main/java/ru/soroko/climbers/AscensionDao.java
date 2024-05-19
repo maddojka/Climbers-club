@@ -1,6 +1,5 @@
 package ru.soroko.climbers;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -47,6 +46,8 @@ public class AscensionDao
     public List<Integer> getGroupId(String superiorData, int succeedClimbers) {
         TypedQuery<Integer> namedNativeQuery = entityManager
                 .createNamedQuery("get_group_id", Integer.class);
+        namedNativeQuery.setParameter(5, superiorData);
+        namedNativeQuery.setParameter(4, succeedClimbers);
         return namedNativeQuery.getResultList();
     }
 
@@ -59,6 +60,8 @@ public class AscensionDao
     public List<Ascension> getAscensionsByPeriod(LocalDate from, LocalDate before) {
         TypedQuery<Ascension> namedNativeQuery = entityManager
                 .createNamedQuery("get_ascensions_by_period", Ascension.class);
+        namedNativeQuery.setParameter(2, from);
+        namedNativeQuery.setParameter(3, before);
         return namedNativeQuery.getResultList();
     }
 }

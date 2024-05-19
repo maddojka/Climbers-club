@@ -2,6 +2,7 @@ package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -47,4 +48,5 @@ public class ClimberDao
                 .createNamedQuery("get_id_by_value", String.class);
         return namedNativeQuery.getResultList();
     }
+
 }

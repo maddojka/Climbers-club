@@ -3,7 +3,10 @@ package ru.soroko.climbers;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -13,6 +16,7 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "mountain_id", nullable = false)
     private Mountain mountain;
@@ -26,7 +30,7 @@ public class Group {
     @NotNull
     @Future
     @Column(name = "next_ascension", nullable = false)
-    private LocalDateTime nextAscension;
+    private LocalDate nextAscension;
 
     @Positive
     @Column(name = "max_climbers", nullable = false)
@@ -38,5 +42,12 @@ public class Group {
 
     @PositiveOrZero
     @Column(name = "amount_of_climbers", nullable = false)
-    private int amountOfClimbers;
+    private int amountOfClimbers = 0;
+
+    @NotNull
+    @ManyToMany
+    @JoinTable(name = "tb_group_climbers",
+            joinColumns = @JoinColumn(name = "group_id"),
+            inverseJoinColumns = @JoinColumn(name = "climber_id"))
+    private List<Climber> climbers = new ArrayList<>();
 }

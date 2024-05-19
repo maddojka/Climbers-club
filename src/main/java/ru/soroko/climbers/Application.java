@@ -5,6 +5,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.time.LocalDate;
 
 public class Application {
@@ -12,81 +15,190 @@ public class Application {
         EntityManagerFactory factory = Persistence
                 .createEntityManagerFactory("climbers");
         EntityManager manager = factory.createEntityManager();
-
-       /* Country tanzania = new Country("Tanzania");
-        Mountain kilimanjaro = new Mountain("Kilimanjaro", tanzania, 5895);
-        Country russia = new Country("Russia");
-        Mountain elbrus = new Mountain("Elbrus", russia, 5643);
-        Country argentina = new Country("Argentina");
-        Mountain andes = new Mountain("Andes", argentina, 6961);
+        // creating dao
+        AscensionDao ascensionDao = new AscensionDao(manager);
+        ClimberDao climberDao = new ClimberDao(manager);
+        CountryDao countryDao = new CountryDao(manager);
+        GroupDao groupDao = new GroupDao(manager);
+        MountainDao mountainDao = new MountainDao(manager);
+        ReserveDao reserveDao = new ReserveDao(manager);
+        // creating climbers
+        // first climber
         Climber firstClimber =
-                new Climber("Adam", "Smith", 892113374563L, "asmith@gmail.com",
-                        LocalDate.of(2022, 4, 30));
-        Climber secondClimber =
-                new Climber("Samuel", "Adamson", 892187374572L, "sadamson@gmail.com",
-                        LocalDate.of(2021, 9, 10));
-        Climber thirdClimber =
-                new Climber("Olivia", "Smith", 891178855541L, "osmith@gmail.com",
-                        LocalDate.of(2018, 6, 12));
-        Climber fourthClimber =
-                new Climber("Jack", "Aldridge", 893144579005L, "jaldridge@gmail.com",
-                        LocalDate.of(2023, 12, 5));
-        Climber fifthClimber =
-                new Climber("Amelia", "Brown", 892115576522L, "abrown@gmail.com",
-                        LocalDate.of(2022, 8, 15));
-        Climber sixthClimber =
-                new Climber("Joseph", "Evans", 891187674552L, "jevans@gmail.com",
-                        LocalDate.of(2020, 5, 10));
-        Climber seventhClimber =
-                new Climber("Emily", "Walker", 899923377764L, "ewalker@gmail.com",
-                        LocalDate.of(2019, 6, 17));
-        Climber eighthClimber =
-                new Climber("Harry", "Johnson", 8952323675567L, "hjohnson@gmail.com",
-                        LocalDate.of(2023, 11, 13));
-        Climber ninethClimber =
-                new Climber("Jessica", "Harris", 891114479591L, "jharris@gmail.com",
-                        LocalDate.of(2024, 2, 20));
-        Climber tenthClimber =
-                new Climber("Thomas", "Davies", 892113074483L, "tdavies@gmail.com",
-                        LocalDate.of(2024, 3, 31));
-        Group firstGroup =
-                new Group("George Wilson", LocalDate.of(2024, 8, 6), 10, 5000);
-        Group secondGroup =
-                new Group("Lily King", LocalDate.of(2024, 10, 15), 6, 3500);
-        Group thirdGroup =
-                new Group("Connor Ellington", LocalDate.of(2024, 8, 25), 5, 4000);
-        Ascension kilimanjaroAscension =
-                new Ascension(LocalDate.of(2023, 8, 6),
-                        LocalDate.of(2023, 9, 10), 5);
-        Ascension elbrusAscension =
-                new Ascension(LocalDate.of(2022, 10, 15),
-                        LocalDate.of(2022, 11, 6), 10);
-        Ascension andesAscension =
-                new Ascension(LocalDate.of(2021, 5, 6),
-                        LocalDate.of(2021, 6, 6), 4);*/
-      //  NotInUse ascensionDao = new NotInUse();
-    //    Queries queries = new Queries();
-       // ascensionDao.createClimber();
-       // ascensionDao.createMountain();
-      //  ascensionDao.createGroup();
-      //  ascensionDao.createAscension();
-        // insertSql(elbrus);
-        //   List<String> climbers = new ArrayList<>();
-       // climbers = queries.getAscensionSurnamesAndEmails();
-       // System.out.println(climbers);
-      //  List<String> groupsIds = new ArrayList<>();
-      //  groupsIds = queries.getIdByValue();
-      //  System.out.println(groupsIds);
-      //  List<String> openGroups = new ArrayList<>();
-       // openGroups = queries.getOpenGroups();
-       // System.out.println(openGroups);
-     //   List<String> ascensionsByPeriod = new ArrayList<>();
-     //   ascensionsByPeriod = queries.getAscensionsByPeriod();
-     //   System.out.println(ascensionsByPeriod);
-     //   List<String> mountainNames = new ArrayList<>();
-    //    mountainNames = queries.getMountainNames();
-      //  System.out.println(mountainNames);
+                new Climber();
+        firstClimber.setName("Adam");
+        firstClimber.setSurname("Smith");
+        firstClimber.setPhoneNumber(892113374563L);
+        firstClimber.setEmail("asmith@gmail.com");
+        firstClimber.setLastAscension(LocalDate.of(2022, 4, 30));
+        climberDao.insert(firstClimber);
+        Climber secondClimber = new Climber();
+        // second climber
+        secondClimber.setName("Samuel");
+        secondClimber.setSurname("Adamson");
+        secondClimber.setPhoneNumber(892187374572L);
+        secondClimber.setEmail("sadamson@gmail.com");
+        secondClimber.setLastAscension(LocalDate.of(2021, 9, 10));
+        climberDao.insert(secondClimber);
+        // third climber
+        Climber thirdClimber = new Climber();
+        thirdClimber.setName("Olivia");
+        thirdClimber.setSurname("Smith");
+        thirdClimber.setPhoneNumber(891178855541L);
+        thirdClimber.setEmail("osmith@gmail.com");
+        thirdClimber.setLastAscension(LocalDate.of(2018, 6, 12));
+        climberDao.insert(thirdClimber);
+        // fourth climber
+        Climber fourthClimber = new Climber();
+        fourthClimber.setName("Jack");
+        fourthClimber.setSurname("Aldridge");
+        fourthClimber.setPhoneNumber(893144579005L);
+        fourthClimber.setEmail("jaldridge@gmail.com");
+        fourthClimber.setLastAscension(LocalDate.of(2023, 12, 5));
+        climberDao.insert(fourthClimber);
+        // fifth climber
+        Climber fifthClimber = new Climber();
+        fifthClimber.setName("Amelia");
+        fifthClimber.setSurname("Brown");
+        fifthClimber.setPhoneNumber(892115576522L);
+        fifthClimber.setEmail("abrown@gmail.com");
+        fifthClimber.setLastAscension(LocalDate.of(2022, 8, 15));
+        climberDao.insert(fifthClimber);
+        // sixth climber
+        Climber sixthClimber = new Climber();
+        sixthClimber.setName("Joseph");
+        sixthClimber.setSurname("Evans");
+        sixthClimber.setPhoneNumber(891187674552L);
+        sixthClimber.setEmail("jevans@gmail.com");
+        sixthClimber.setLastAscension(LocalDate.of(2020, 5, 10));
+        climberDao.insert(sixthClimber);
+        // seventh climber
+        Climber seventhClimber = new Climber();
+        seventhClimber.setName("Emily");
+        seventhClimber.setSurname("Walker");
+        seventhClimber.setPhoneNumber(899923377764L);
+        seventhClimber.setEmail("ewalker@gmail.com");
+        seventhClimber.setLastAscension(LocalDate.of(2019, 6, 17));
+        climberDao.insert(seventhClimber);
+        // eighth climber
+        Climber eighthClimber = new Climber();
+        eighthClimber.setName("Harry");
+        eighthClimber.setSurname("Johnson");
+        eighthClimber.setPhoneNumber(8952323675567L);
+        eighthClimber.setEmail("hjohnson@gmail.com");
+        eighthClimber.setLastAscension(LocalDate.of(2023, 11, 13));
+        climberDao.insert(eighthClimber);
+        // nineth climber
+        Climber ninethClimber = new Climber();
+        ninethClimber.setName("Jessica");
+        ninethClimber.setSurname("Harris");
+        ninethClimber.setPhoneNumber(891114479591L);
+        ninethClimber.setEmail("jharris@gmail.com");
+        ninethClimber.setLastAscension(LocalDate.of(2024, 2, 20));
+        climberDao.insert(ninethClimber);
+        // tenth climber
+        Climber tenthClimber = new Climber();
+        tenthClimber.setName("Thomas");
+        tenthClimber.setSurname("Davies");
+        tenthClimber.setPhoneNumber(892113074483L);
+        tenthClimber.setEmail("tdavies@gmail.com");
+        tenthClimber.setLastAscension(LocalDate.of(2024, 3, 31));
+        climberDao.insert(tenthClimber);
+        // creating countries
+        // tanzania
+        Country tanzania = new Country();
+        tanzania.setName("Tanzania");
+        countryDao.insert(tanzania);
+        // russia
+        Country russia = new Country();
+        russia.setName("Russia");
+        countryDao.insert(russia);
+        // argentina
+        Country argentina = new Country();
+        argentina.setName("Argentina");
+        countryDao.insert(argentina);
+        // chile
+        Country chile = new Country();
+        chile.setName("Chile");
+        countryDao.insert(chile);
+        // creating mountains
+        Mountain kilimanjaro = new Mountain();
+        kilimanjaro.setTitle("Kilimanjaro");
+        kilimanjaro.setHeight(5895);
+        mountainDao.insert(kilimanjaro);
+        Mountain elbrus = new Mountain();
+        elbrus.setTitle("Elbrus");
+        elbrus.setHeight(5643);
+        mountainDao.insert(elbrus);
+        Mountain andes = new Mountain();
+        andes.setTitle("Andes");
+        andes.setHeight(6961);
+        mountainDao.insert(andes);
+        // creating groups
+        Group firstGroup = new Group();
+        firstGroup.setMountain(kilimanjaro);
+        firstGroup.setSuperior("George Wilson");
+        firstGroup.setNextAscension(LocalDate.of(2024, 8, 6));
+        firstGroup.setMaxClimbers(10);
+        firstGroup.setCost(5000.0);
+        groupDao.insert(firstGroup);
+        Group secondGroup = new Group();
+        secondGroup.setMountain(elbrus);
+        secondGroup.setSuperior("Lily King");
+        secondGroup.setNextAscension(LocalDate.of(2024, 10, 15));
+        secondGroup.setMaxClimbers(6);
+        secondGroup.setCost(3500.0);
+        groupDao.insert(secondGroup);
+        Group thirdGroup = new Group();
+        thirdGroup.setMountain(andes);
+        thirdGroup.setSuperior("Connor Ellington");
+        thirdGroup.setNextAscension(LocalDate.of(2024, 8, 25));
+        thirdGroup.setMaxClimbers(5);
+        thirdGroup.setCost(4000.0);
+        groupDao.insert(thirdGroup);
+        // creating ascensions
+        Ascension kilimanjaroAscension = new Ascension();
+        kilimanjaroAscension.setStartDate(LocalDate.of(2023, 8, 6));
+        kilimanjaroAscension.setEndDate(LocalDate.of(2023, 9, 10));
+        kilimanjaroAscension.setSucceedClimbers(5);
+        kilimanjaroAscension.setGroup(firstGroup);
+        kilimanjaroAscension.setMountain(kilimanjaro);
+        ascensionDao.insert(kilimanjaroAscension);
+        Ascension elbrusAscension = new Ascension();
+        elbrusAscension.setStartDate(LocalDate.of(2022, 10, 15));
+        elbrusAscension.setEndDate(LocalDate.of(2022, 11, 6));
+        elbrusAscension.setSucceedClimbers(10);
+        elbrusAscension.setGroup(secondGroup);
+        elbrusAscension.setMountain(elbrus);
+        ascensionDao.insert(elbrusAscension);
+        Ascension andesAscension = new Ascension();
+        andesAscension.setStartDate(LocalDate.of(2021, 5, 6));
+        andesAscension.setEndDate(LocalDate.of(2021, 6, 6));
+        andesAscension.setSucceedClimbers(4);
+        andesAscension.setGroup(thirdGroup);
+        andesAscension.setMountain(andes);
+        ascensionDao.insert(andesAscension);
+        // call queries
+        climberDao.getSurnamesAndEmails();
+        ascensionDao.getOpenGoups();
+        ascensionDao.getGroupId("George Wilson", 5);
+        ascensionDao.getAscensionsByPeriod(LocalDate.of(2021, 5, 6),
+                LocalDate.of(2023, 9, 10));
+        mountainDao.getMountainNames(5);
         manager.close();
         factory.close();
+    }
+
+    public static void addClimber(Climber climber, Group group, Reserve reserve, ClimberDao climberDao) {
+        if (climber == null || group == null
+                || climberDao == null || reserve == null) return;
+        if (group.getAmountOfClimbers() < group.getMaxClimbers()) {
+            climber.getGroups().add(group);
+            climberDao.insert(climber);
+            group.setAmountOfClimbers(+1);
+        } else {
+            climber.getReserveGroups().add(reserve);
+            climberDao.insert(climber);
+        }
     }
 }

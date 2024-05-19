@@ -48,4 +48,9 @@ public class Ascension {
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;
 
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "mountain_id", nullable = false)
+    private Mountain mountain;
+
 }

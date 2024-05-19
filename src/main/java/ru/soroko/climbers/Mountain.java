@@ -7,6 +7,9 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NamedNativeQueries({
         @NamedNativeQuery(name = "get_mountain_names", query = "SELECT title " +
                 "FROM tb_mountains " +
@@ -28,18 +31,27 @@ public class Mountain {
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
-    @NotNull
+    /*@NotNull
     @ManyToOne
     @JoinColumn(name = "country", nullable = false)
-    private Country country;
+    private Country country;*/
+    @NotNull
+    @ManyToMany
+    @JoinTable(name = "tb_mountain_countries",
+            joinColumns = @JoinColumn(name = "mountain_id"),
+            inverseJoinColumns = @JoinColumn(name = "country_id"))
+    private List<Country> countries = new ArrayList<>();
 
     @Positive
     @Size(min = 100)
     @Column(name = "height", nullable = false)
     private int height;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "ascension_id", nullable = false)
-    private Ascension ascension;
+    private Ascension ascension;*/
+    @NotNull
+    @OneToMany(mappedBy = "mountain")
+    private List<Ascension> ascensions = new ArrayList<>();
 
 }

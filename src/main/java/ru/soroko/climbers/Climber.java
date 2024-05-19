@@ -7,13 +7,15 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NamedNativeQueries({
         @NamedNativeQuery(name = "get_id_by_value", query = "SELECT surname, email " +
-                "FROM  tb_climbers " +
-                "WHERE DATE_PART('day', CURRENT_DATE) < DATE_PART('day', CURRENT_DATE - 365) " +
-                "ORDER BY surname ")
+                "FROM tb_climbers " +
+                "WHERE DATE_PART('day', last_ascension) < DATE_PART('day', CURRENT_DATE - 365) " +
+                "ORDER surname ")
 })
 @Data
 @Entity
@@ -48,4 +50,18 @@ public class Climber {
     @NotNull
     @Column(name = "last_ascension", nullable = false)
     private LocalDate lastAscension;
+
+    @NotNull
+    @ManyToMany
+    @JoinTable(name = "tb_climber_groups",
+            joinColumns = @JoinColumn(name = "climber_id"),
+            inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private List<Group> groups = new ArrayList<>();
+
+    @NotNull
+    @ManyToMany
+    @JoinTable(name = "tb_climber_reserves",
+            joinColumns = @JoinColumn(name = "climber_id"),
+            inverseJoinColumns = @JoinColumn(name = "reserve_id"))
+    private List<Reserve> reserveGroups = new ArrayList<>();
 }
