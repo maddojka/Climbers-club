@@ -6,17 +6,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQueries({
-        @NamedNativeQuery(name = "get_mountain_names", query = "SELECT title " +
-                "FROM tb_mountains " +
-                "JOIN tb_ascensions " +
-                "ON tb_ascensions.id = tb_mountains.ascension_id " +
-                "WHERE ascension.succeed_climbers > 5 ")
-})
+
 @Data
 @Entity
 @Table(name = "tb_mountains")

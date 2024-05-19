@@ -1,6 +1,9 @@
 package ru.soroko.climbers;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+
+import java.util.List;
 
 public class GroupDao
         extends Dao<Group, Integer> {
@@ -37,5 +40,11 @@ public class GroupDao
     @Override
     public Group findById(Integer integer) {
         return entityManager.find(Group.class, integer);
+    }
+
+    public List<Group> getOpenGoups() {
+        TypedQuery<Group> namedNativeQuery = entityManager
+                .createNamedQuery("get_open_groups", Group.class);
+        return namedNativeQuery.getResultList();
     }
 }

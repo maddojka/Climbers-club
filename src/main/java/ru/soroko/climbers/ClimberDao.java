@@ -49,4 +49,16 @@ public class ClimberDao
         return namedNativeQuery.getResultList();
     }
 
+    /*public void addClimber(Climber climber, Group group) {
+        if (climber == null || group == null) return;
+        if (group.getAmountOfClimbers() < group.getMaxClimbers()) {
+            climber.getGroups().add(group);
+            insert(climber);
+            group.setAmountOfClimbers(group.getAmountOfClimbers() + 1);
+        } else {
+            Reserve reserve = new Reserve();
+            climber.getReserveGroups().add(reserve);
+            insert(climber);
+        }
+    }*/
 }

@@ -8,20 +8,20 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @NamedNativeQueries({
-        @NamedNativeQuery(name = "get_group_id", query = "SELECT group.id " +
+        @NamedNativeQuery(name = "get_group_id", query = "SELECT group_id " +
                 "FROM tb_ascensions " +
                 "JOIN tb_groups " +
                 "ON tb_groups.id = tb_ascensions.group_id " +
-                "WHERE group.superior = George Wilson AND succeed_climbers > 2 "),
-        @NamedNativeQuery(name = "get_open_groups", query = "SELECT tb_groups.id " +
-                "FROM tb_ascensions " +
-                "JOIN tb_groups " +
-                "ON tb_groups.id = tb_ascensions.group_id " +
-                "WHERE tb_groups.superior = ? AND tb_groups.succeed_climbers > ? "),
+                "WHERE tb_groups.superior =:superior AND tb_ascensions.succeed_climbers >:succeedClimbers "),
         @NamedNativeQuery(name = "get_ascensions_by_period", query = "SELECT * " +
                 "FROM tb_ascensions " +
-                "WHERE start_date >= '2014-02-01' " +
-                "AND end_date < 2014-03-01' ")
+                "WHERE start_date >=:startDate " +
+                "AND end_date <:=endDate "),
+        @NamedNativeQuery(name = "get_mountain_names", query = "SELECT tb_mountains.title " +
+                "FROM tb_ascensions " +
+                "JOIN tb_mountains " +
+                "ON tb_mountains.id = tb_ascensions.mountain_id " +
+                "WHERE tb_ascensions.succeed_climbers >:succeedClimbers ")
 })
 @Data
 @Entity

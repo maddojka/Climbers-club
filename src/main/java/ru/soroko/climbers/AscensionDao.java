@@ -46,22 +46,23 @@ public class AscensionDao
     public List<Integer> getGroupId(String superiorData, int succeedClimbers) {
         TypedQuery<Integer> namedNativeQuery = entityManager
                 .createNamedQuery("get_group_id", Integer.class);
-        namedNativeQuery.setParameter(5, superiorData);
-        namedNativeQuery.setParameter(4, succeedClimbers);
+        namedNativeQuery.setParameter("superior", superiorData);
+        namedNativeQuery.setParameter("succeedClimbers", succeedClimbers);
         return namedNativeQuery.getResultList();
     }
 
-    public List<Group> getOpenGoups() {
-        TypedQuery<Group> namedNativeQuery = entityManager
-                .createNamedQuery("get_open_groups", Group.class);
-        return namedNativeQuery.getResultList();
-    }
-
-    public List<Ascension> getAscensionsByPeriod(LocalDate from, LocalDate before) {
+    public List<Ascension> getAscensionsByPeriod(LocalDate startDate, LocalDate endDate) {
         TypedQuery<Ascension> namedNativeQuery = entityManager
                 .createNamedQuery("get_ascensions_by_period", Ascension.class);
-        namedNativeQuery.setParameter(2, from);
-        namedNativeQuery.setParameter(3, before);
+        namedNativeQuery.setParameter("startDate", startDate);
+        namedNativeQuery.setParameter("endDate", endDate);
+        return namedNativeQuery.getResultList();
+    }
+
+    public List<String> getMountainNames(int succeedClimbers) {
+        TypedQuery<String> namedNativeQuery = entityManager
+                .createNamedQuery("get_mountain_names", String.class);
+        namedNativeQuery.setParameter("succeedClimbers", succeedClimbers);
         return namedNativeQuery.getResultList();
     }
 }
