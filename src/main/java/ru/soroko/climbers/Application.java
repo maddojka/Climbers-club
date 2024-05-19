@@ -31,7 +31,7 @@ public class Application {
         firstClimber.setPhoneNumber(892113374563L);
         firstClimber.setEmail("asmith@gmail.com");
         firstClimber.setLastAscension(LocalDate.of(2022, 4, 30));
-        climberDao.insert(firstClimber);
+      //  climberDao.insert(firstClimber);
         Climber secondClimber = new Climber();
         // second climber
         secondClimber.setName("Samuel");
@@ -39,7 +39,7 @@ public class Application {
         secondClimber.setPhoneNumber(892187374572L);
         secondClimber.setEmail("sadamson@gmail.com");
         secondClimber.setLastAscension(LocalDate.of(2021, 9, 10));
-        climberDao.insert(secondClimber);
+      //  climberDao.insert(secondClimber);
         // third climber
         Climber thirdClimber = new Climber();
         thirdClimber.setName("Olivia");
@@ -47,7 +47,7 @@ public class Application {
         thirdClimber.setPhoneNumber(891178855541L);
         thirdClimber.setEmail("osmith@gmail.com");
         thirdClimber.setLastAscension(LocalDate.of(2018, 6, 12));
-        climberDao.insert(thirdClimber);
+       // climberDao.insert(thirdClimber);
         // fourth climber
         Climber fourthClimber = new Climber();
         fourthClimber.setName("Jack");
@@ -55,7 +55,7 @@ public class Application {
         fourthClimber.setPhoneNumber(893144579005L);
         fourthClimber.setEmail("jaldridge@gmail.com");
         fourthClimber.setLastAscension(LocalDate.of(2023, 12, 5));
-        climberDao.insert(fourthClimber);
+       // climberDao.insert(fourthClimber);
         // fifth climber
         Climber fifthClimber = new Climber();
         fifthClimber.setName("Amelia");
@@ -63,7 +63,7 @@ public class Application {
         fifthClimber.setPhoneNumber(892115576522L);
         fifthClimber.setEmail("abrown@gmail.com");
         fifthClimber.setLastAscension(LocalDate.of(2022, 8, 15));
-        climberDao.insert(fifthClimber);
+      //  climberDao.insert(fifthClimber);
         // sixth climber
         Climber sixthClimber = new Climber();
         sixthClimber.setName("Joseph");
@@ -71,7 +71,7 @@ public class Application {
         sixthClimber.setPhoneNumber(891187674552L);
         sixthClimber.setEmail("jevans@gmail.com");
         sixthClimber.setLastAscension(LocalDate.of(2020, 5, 10));
-        climberDao.insert(sixthClimber);
+       // climberDao.insert(sixthClimber);
         // seventh climber
         Climber seventhClimber = new Climber();
         seventhClimber.setName("Emily");
@@ -79,7 +79,7 @@ public class Application {
         seventhClimber.setPhoneNumber(899923377764L);
         seventhClimber.setEmail("ewalker@gmail.com");
         seventhClimber.setLastAscension(LocalDate.of(2019, 6, 17));
-        climberDao.insert(seventhClimber);
+      //  climberDao.insert(seventhClimber);
         // eighth climber
         Climber eighthClimber = new Climber();
         eighthClimber.setName("Harry");
@@ -87,7 +87,7 @@ public class Application {
         eighthClimber.setPhoneNumber(8952323675567L);
         eighthClimber.setEmail("hjohnson@gmail.com");
         eighthClimber.setLastAscension(LocalDate.of(2023, 11, 13));
-        climberDao.insert(eighthClimber);
+      //  climberDao.insert(eighthClimber);
         // nineth climber
         Climber ninethClimber = new Climber();
         ninethClimber.setName("Jessica");
@@ -95,7 +95,7 @@ public class Application {
         ninethClimber.setPhoneNumber(891114479591L);
         ninethClimber.setEmail("jharris@gmail.com");
         ninethClimber.setLastAscension(LocalDate.of(2024, 2, 20));
-        climberDao.insert(ninethClimber);
+      //  climberDao.insert(ninethClimber);
         // tenth climber
         Climber tenthClimber = new Climber();
         tenthClimber.setName("Thomas");
@@ -103,7 +103,7 @@ public class Application {
         tenthClimber.setPhoneNumber(892113074483L);
         tenthClimber.setEmail("tdavies@gmail.com");
         tenthClimber.setLastAscension(LocalDate.of(2024, 3, 31));
-        climberDao.insert(tenthClimber);
+      //  climberDao.insert(tenthClimber);
         // creating countries
         // tanzania
         Country tanzania = new Country();
@@ -178,8 +178,6 @@ public class Application {
         andesAscension.setGroup(thirdGroup);
         andesAscension.setMountain(andes);
         ascensionDao.insert(andesAscension);
-        // creating reserve group
-        Reserve reserve = new Reserve();
         // call queries
         climberDao.getSurnamesAndEmails();
         ascensionDao.getOpenGoups();
@@ -188,19 +186,19 @@ public class Application {
                 LocalDate.of(2023, 9, 10));
         mountainDao.getMountainNames(5);
         // add climber
-        addClimber(fifthClimber, firstGroup, reserve, climberDao);
+        addClimber(fifthClimber, firstGroup, climberDao);
         manager.close();
         factory.close();
     }
 
-    public static void addClimber(Climber climber, Group group, Reserve reserve, ClimberDao climberDao) {
-        if (climber == null || group == null
-                || climberDao == null || reserve == null) return;
+    public static void addClimber(Climber climber, Group group, ClimberDao climberDao) {
+        if (climber == null || group == null || climberDao == null) return;
         if (group.getAmountOfClimbers() < group.getMaxClimbers()) {
             climber.getGroups().add(group);
             climberDao.insert(climber);
-            group.setAmountOfClimbers(+1);
+            group.setAmountOfClimbers(group.getAmountOfClimbers() + 1);
         } else {
+            Reserve reserve = new Reserve();
             climber.getReserveGroups().add(reserve);
             climberDao.insert(climber);
         }
