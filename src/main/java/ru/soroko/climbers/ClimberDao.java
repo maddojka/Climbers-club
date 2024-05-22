@@ -30,11 +30,11 @@ public class ClimberDao
 
     @Override
     public Climber deleteById(Integer integer) {
-        Climber competition = entityManager.find(Climber.class, integer);
+        Climber climber = entityManager.find(Climber.class, integer);
         entityManager.getTransaction().begin();
-        entityManager.remove(competition);
+        entityManager.remove(climber);
         entityManager.getTransaction().commit();
-        return competition;
+        return climber;
     }
 
     @Override
